@@ -13,6 +13,7 @@ public class EmployeePresenter implements IViewLisenner {
 	final private EmployeeDao employeeDao;
 	public EmployeePresenter(EmployeeView view, EmployeeDao employeeDao) {
 		this.view = view;
+		view.addLisener(this);
 		this.employeeDao = employeeDao;
 		fillTableEmployee(employeeDao.getAll());
 	}

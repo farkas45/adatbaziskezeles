@@ -61,9 +61,10 @@ public class EmployeeDao implements IEmployee{
 
 	@Override
 	public void saveEmployee(Employee employee) {
-		String sql = "INSERT INTO employee (first_name, last_name, gender, "
+		System.out.println(employee.toString());
+		String sql = "INSERT INTO employee (first_name, last_name, email, gender, "
 				+ "company, salary) "
-				+ "VALUES (?,?,?,?,?,?,?);";
+				+ "VALUES (?,?,?,?,?,?);";
 		try {
 			pstmt = con.prepareStatement(sql);
 			
@@ -71,9 +72,10 @@ public class EmployeeDao implements IEmployee{
 			pstmt.setString(2, employee.getLastName());
 			pstmt.setString(3, employee.getEmail());
 			pstmt.setString(4, employee.getGender());
-			pstmt.setInt(5, employee.getSalary());
-			pstmt.setString(6, employee.isDeleted()? "0":"1");
+			pstmt.setString(5, employee.getCompany());
+			pstmt.setInt(6, employee.getSalary());
 			pstmt.executeUpdate();
+		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
