@@ -1,5 +1,6 @@
 package hu.ruander.view;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -116,4 +118,84 @@ public class EmployeeView {
 		tableEmployee.setRowHeight(30);
 		setTabbleCellCenter();
 	}
+	
+	public void setEmpNewFrame() {
+		empNewFrame = new JFrame();
+		empNewFrame.setBounds(900, 200, 600, 700);
+		empNewFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		empNewFrame.getContentPane().setLayout(null);
+		empNewFrame.setTitle("Új dolgozó");
+		empNewFrame.setVisible(true);
+		
+		lblFirstName = new JLabel("Keresztnév");
+		lblFirstName.setBounds(100,60,190,45);
+		lblFirstName.setFont(new Font("Tahoma", Font.BOLD, 16));
+		empNewFrame.add(lblFirstName);
+		
+		tfFirstName = new JTextField();
+		tfFirstName.setBounds(280,60,190,45);
+		tfFirstName.setHorizontalAlignment(SwingConstants.CENTER);
+		tfFirstName.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		empNewFrame.add(tfFirstName);
+		
+		lblLastName = new JLabel("Vezetéknév");
+		lblLastName.setBounds(100,120,190,45);
+		lblLastName.setFont(new Font("Tahoma", Font.BOLD, 16));
+		empNewFrame.add(lblLastName);
+		
+		tfLastName = new JTextField();
+		tfLastName.setBounds(280,120,190,45);
+		tfLastName.setHorizontalAlignment(SwingConstants.CENTER);
+		tfLastName.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		empNewFrame.add(tfLastName);
+		
+		lblEmail= new JLabel("Email");
+		lblEmail.setBounds(100,180,190,45);
+		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 16));
+		empNewFrame.add(lblEmail);
+		
+		tfEmail= new JTextField();
+		tfEmail.setBounds(280,180,190,45);
+		tfEmail.setHorizontalAlignment(SwingConstants.CENTER);
+		tfEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		empNewFrame.add(tfEmail);
+		
+		lblCompany= new JLabel("Vállalat");
+		lblCompany.setBounds(100,240,190,45);
+		lblCompany.setFont(new Font("Tahoma", Font.BOLD, 16));
+		empNewFrame.add(lblCompany);
+		
+		tfCompany= new JTextField();
+		tfCompany.setBounds(280,240,190,45);
+		tfCompany.setHorizontalAlignment(SwingConstants.CENTER);
+		tfCompany.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		empNewFrame.add(tfCompany);
+		
+		lblSalary= new JLabel("Fizetés");
+		lblSalary.setBounds(100,300,190,45);
+		lblSalary.setFont(new Font("Tahoma", Font.BOLD, 16));
+		empNewFrame.add(lblSalary);
+		
+		tfSalary = new JTextField();
+		tfSalary.setBounds(280,300,190,45);
+		tfSalary.setHorizontalAlignment(SwingConstants.CENTER);
+		tfSalary.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		empNewFrame.add(tfSalary);
+		
+		btnEmpSave = new JButton("MENTÉS");
+		btnEmpSave.setBounds(280,480,190,45);
+		empNewFrame.add(btnEmpSave);
+		btnEmpSave.setVisible(true);
+		
+		btnEmpSave.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notifyListenersOnButtonClickedSaveEmployee();
+				
+			}
+		});
+		
+	}
+	
 }
