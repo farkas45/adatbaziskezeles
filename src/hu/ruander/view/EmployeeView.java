@@ -54,6 +54,8 @@ public class EmployeeView {
 		empListFrame.setVisible(true);
 	}
 	
+	
+	
 	public void setTabbleCellCenter() {
 		DefaultTableCellRenderer renderer=new DefaultTableCellRenderer();
 		renderer.setHorizontalAlignment(JLabel.CENTER);
@@ -86,5 +88,6 @@ public class EmployeeView {
 		}
 		tableEmployee.setModel(model);
 		tableEmployee.setRowHeight(30);
+		setTabbleCellCenter();
 	}
 }
