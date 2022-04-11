@@ -5,8 +5,11 @@ import hu.ruander.view.EmployeeView;
 
 public class EmployeePresenter {
 
+	final private EmployeeView view;
+	final private EmployeeDao employeeDao;
 	public EmployeePresenter(EmployeeView view, EmployeeDao employeeDao) {
-		// TODO Auto-generated constructor stub
+		this.view = view;
+		this.employeeDao = employeeDao;
 	}
 
 }
