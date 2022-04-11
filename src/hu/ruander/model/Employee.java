@@ -3,8 +3,8 @@ package hu.ruander.model;
 public class Employee {
 	
 	private int id  ; 
-	private String first_name ;
-	private String last_name ;
+	private String firstName ;
+	private String lastName ;
 	private String email ; 
 	private String gender ;
 	private String company ;
@@ -13,12 +13,12 @@ public class Employee {
 	
 	
 	
-	public Employee(int id, String first_name, String last_name, String email, String gender, String company,
+	public Employee(int id, String firstName, String lastName, String email, String gender, String company,
 			int salary, boolean deleted) {
 		super();
 		this.id = id;
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
 		this.gender = gender;
 		this.company = company;
@@ -28,11 +28,11 @@ public class Employee {
 	public int getId() {
 		return id;
 	}
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstName() {
+		return firstName;
 	}
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
 	public String getEmail() {
 		return email;
@@ -51,7 +51,7 @@ public class Employee {
 	}
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email
+		return "Employee [id=" + id + ", first_name=" + firstName + ", last_name=" + lastName + ", email=" + email
 				+ ", gender=" + gender + ", company=" + company + ", salary=" + salary + ", deleted=" + deleted + "]";
 	}
 	
