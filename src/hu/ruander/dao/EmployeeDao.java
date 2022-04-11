@@ -62,6 +62,7 @@ public class EmployeeDao implements IEmployee{
 	@Override
 	public void saveEmployee(Employee employee) {
 		System.out.println(employee.toString());
+		System.out.println(con);
 		String sql = "INSERT INTO employee (first_name, last_name, email, gender, "
 				+ "company, salary) "
 				+ "VALUES (?,?,?,?,?,?);";
