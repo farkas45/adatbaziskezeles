@@ -11,7 +11,18 @@ public class Employee {
 	private int salary ;
 	private boolean deleted;
 	
-	
+	public Employee( String firstName, String lastName, String email, String gender, String company,
+			int salary) {
+		
+		
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.gender = gender;
+		this.company = company;
+		this.salary = salary;
+		
+	}
 	
 	public Employee(int id, String firstName, String lastName, String email, String gender, String company,
 			int salary, boolean deleted) {

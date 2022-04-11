@@ -1,16 +1,34 @@
 package hu.ruander.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import hu.ruander.model.Employee;
+import hu.ruander.utils.Database;
 
 public class EmployeeDao implements IEmployee{
-
+	private Connection con = new Database().createConnection();
+	private ResultSet rs = null;
+	private PreparedStatement pstmt = null; 
 	@Override
 	public List<Employee> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Employee> employees = new ArrayList<Employee>();
+		String sql = "SELECT * FROM employee WHERE employee.deleted = 0;"; 
+		try {
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				employees.add(getObjectFromRs(rs));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return employees;
 	}
 
 	@Override
@@ -21,15 +39,49 @@ public class EmployeeDao implements IEmployee{
 
 	@Override
 	public Employee getObjectFromRs(ResultSet rs) {
-		// TODO Auto-generated method stub
-		return null;
+		Employee empObj = null;
+		try {
+			empObj = new Employee(
+				rs.getInt("id"),
+				rs.getString("first_name"),
+				rs.getString("last_name"),
+				rs.getString("email"),
+				rs.getString("gender"),
+				rs.getString("company"),
+				rs.getInt("salary"),
+				rs.getBoolean("deleted")
+				
+			);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return empObj;
 	}
 
 	@Override
-	public void saveEmployee() {
-		// TODO Auto-generated method stub
+	public void saveEmployee(Employee employee) {
+		String sql = "INSERT INTO employee (first_name, last_name, gender, "
+				+ "company, salary) "
+				+ "VALUES (?,?,?,?,?,?,?);";
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, employee.getFirstName());
+			pstmt.setString(2, employee.getLastName());
+			pstmt.setString(3, employee.getEmail());
+			pstmt.setString(4, employee.getGender());
+			pstmt.setInt(5, employee.getSalary());
+			pstmt.setString(6, employee.isDeleted()? "0":"1");
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
+
+
 
 
 

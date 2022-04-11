@@ -10,6 +10,6 @@ public interface IEmployee {
 	 List<Employee> getAll();
 	Employee getId();
 	Employee getObjectFromRs(ResultSet rs);
-	 void saveEmployee();
+	 void saveEmployee(Employee employee);
 	
 }

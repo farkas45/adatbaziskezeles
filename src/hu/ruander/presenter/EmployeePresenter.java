@@ -1,15 +1,35 @@
 package hu.ruander.presenter;
 
-import hu.ruander.dao.EmployeeDao;
-import hu.ruander.view.EmployeeView;
+import java.util.List;
 
-public class EmployeePresenter {
+import hu.ruander.dao.EmployeeDao;
+import hu.ruander.model.Employee;
+import hu.ruander.view.EmployeeView;
+import hu.ruander.view.IViewLisenner;
+
+public class EmployeePresenter implements IViewLisenner {
 
 	final private EmployeeView view;
 	final private EmployeeDao employeeDao;
 	public EmployeePresenter(EmployeeView view, EmployeeDao employeeDao) {
 		this.view = view;
 		this.employeeDao = employeeDao;
+		fillTableEmployee(employeeDao.getAll());
+	}
+	
+	public void fillTableEmployee(List<Employee> employees) {
+		view.setModelTableEmployee(employees);
+	}
+	
+	@Override
+	public void onButtonClickedCreateFrame() {
+		view.setEmpNewFrame();
+		
 	}
 
+	@Override
+	public void onButtonClickedSaveEmployee() {
+		employeeDao.saveEmployee(view.getEmpDataFromFrame());
+		
+	}
 }

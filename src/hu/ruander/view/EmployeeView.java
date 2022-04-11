@@ -3,6 +3,7 @@ package hu.ruander.view;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +32,13 @@ public class EmployeeView {
 	private JTextField tfSalary;
 	private JTextField tfEmail;
 	private JTextField tfCompany;
+	private JTextField tfGender;
 	private JLabel lblFirstName;
 	private JLabel lblLastName;
 	private JLabel lblSalary;
 	private JLabel lblEmail;
 	private JLabel lblCompany;
+	private JLabel lblGender;
 	private JButton btnEmpSave;
 	public EmployeeView() {
 		this.listeners=new ArrayList<IViewLisenner>();
@@ -171,13 +174,24 @@ public class EmployeeView {
 		tfCompany.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		empNewFrame.add(tfCompany);
 		
+		lblGender= new JLabel("Nem");
+		lblGender.setBounds(100,300,190,45);
+		lblGender.setFont(new Font("Tahoma", Font.BOLD, 16));
+		empNewFrame.add(lblGender);
+		
+		tfGender= new JTextField();
+		tfGender.setBounds(280,300,190,45);
+		tfGender.setHorizontalAlignment(SwingConstants.CENTER);
+		tfGender.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		empNewFrame.add(tfGender);
+		
 		lblSalary= new JLabel("Fizetés");
-		lblSalary.setBounds(100,300,190,45);
+		lblSalary.setBounds(100,360,190,45);
 		lblSalary.setFont(new Font("Tahoma", Font.BOLD, 16));
 		empNewFrame.add(lblSalary);
 		
 		tfSalary = new JTextField();
-		tfSalary.setBounds(280,300,190,45);
+		tfSalary.setBounds(280,360,190,45);
 		tfSalary.setHorizontalAlignment(SwingConstants.CENTER);
 		tfSalary.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		empNewFrame.add(tfSalary);
@@ -196,6 +210,20 @@ public class EmployeeView {
 			}
 		});
 		
+	}
+	
+	public Employee getEmpDataFromFrame() {
+		Employee employee = new Employee(
+				tfFirstName.getText(),
+				tfLastName.getText(),
+				tfEmail.getText(),
+				tfCompany.getText(),
+				tfGender.getText(),
+				Integer.parseInt(tfSalary.getText())
+				
+				
+	);
+		return employee;
 	}
 	
 }
