@@ -1,5 +1,7 @@
 package hu.ruander.view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,11 +53,35 @@ public class EmployeeView {
 		btnCreateEmpNewFrame = new JButton("Új dolgozó felvitel");
 		btnCreateEmpNewFrame.setBounds(60,240, 150, 50);
 		
+		btnCreateEmpNewFrame.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notifyListenersOnButtonClickedCreateFrame();
+				
+			}
+		});
+		
+		empListFrame.add(btnCreateEmpNewFrame);
 		empListFrame.setVisible(true);
 	}
+//--------------------------------------------------------------------------------------------------------------------------
+	//Lisenerek
+	public void addLisener(final IViewLisenner listener) {
+		listeners.add(listener);
+	}
+	private void notifyListenersOnButtonClickedCreateFrame() {
+		for (final IViewLisenner listener :listeners) {
+			listener.onButtonClickedCreateFrame();
+		}
+	}
 	
-	
-	
+	private void notifyListenersOnButtonClickedSaveEmployee() {
+		for (final IViewLisenner listener : listeners) {
+			listener.onButtonClickedSaveEmployee();
+		}
+	}
+//----------------------------------------------------------------------------------------------------------------------
 	public void setTabbleCellCenter() {
 		DefaultTableCellRenderer renderer=new DefaultTableCellRenderer();
 		renderer.setHorizontalAlignment(JLabel.CENTER);
