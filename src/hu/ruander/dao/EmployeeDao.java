@@ -133,7 +133,8 @@ public class EmployeeDao implements IEmployee{
 	@Override
 	public List<Employee> SearchData(String data) {
 		List<Employee> employees = new ArrayList<Employee>();
-		String sql = "SELECT * FROM employee WHERE employee.deleted = 0;"; 
+		System.out.println(data);
+		String sql = "SELECT * FROM employee WHERE deleted = 0 AND first_name LIKE '% "+ data+"%';"; 
 		try {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
