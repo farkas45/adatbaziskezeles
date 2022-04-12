@@ -37,6 +37,7 @@ public class EmployeeView {
 	private JTextField tfGender;
 	private JTextField tfSearch;
 	private JLabel lblSearch;
+	private JLabel lblSearchError;
 	private JLabel lblFirstName;
 	private JLabel lblLastName;
 	private JLabel lblSalary;
@@ -90,6 +91,10 @@ public class EmployeeView {
 		tfSearch.setBounds(90,300,190,45);
 		tfSearch.setHorizontalAlignment(SwingConstants.CENTER);
 		tfSearch.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblSearchError =new JLabel();
+		lblSearchError.setBounds(400,400, 150, 50);
+		lblSearchError.setOpaque(true);
+		
 		lblSearch =new JLabel("Keresés");
 		lblSearch.setBounds(30,300, 150, 50);
 		btnSeach = new JButton("Keresés");
@@ -105,7 +110,7 @@ public class EmployeeView {
 		
 		
 	
-		
+		empListFrame.add(lblSearchError);
 		empListFrame.add(tfSearch);
 		empListFrame.add(btnSeach);
 		empListFrame.add(lblSearch);
@@ -461,5 +466,8 @@ public class EmployeeView {
 	public void disposeNewDataFrame() {
 		empNewFrame.dispose();
 		}
-
+	public void setSearchLabelError(String data) {
+		lblSearchError.setText(data);
+		lblSearchError.setBackground(Color.RED);
+	}
 }

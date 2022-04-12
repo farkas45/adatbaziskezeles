@@ -61,12 +61,14 @@ public class EmployeePresenter implements IViewLisenner {
 
 	@Override
 	public void onButtonClickedSearch( String data) {
-		if (employeeDao.SearchData(data)!=null) {
+		List<Employee> employees =employeeDao.SearchData(data);
+			
+		if (employees!=null) {
 			view.tableEmployeeRowsDelet();
-			fillTableEmployee(employeeDao.SearchData(data));
+			fillTableEmployee(employees);
 		}
 		else {
-			
+			view.setSearchLabelError("Nincs Találat!");
 		}
 		
 	}
