@@ -35,4 +35,10 @@ public class EmployeePresenter implements IViewLisenner {
 		fillTableEmployee(employeeDao.getAll());
 		
 	}
+
+	@Override
+	public void onMouseClickedRowSelected() {
+		// TODO Auto-generated method stub
+		
+	}
 }
