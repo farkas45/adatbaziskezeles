@@ -38,7 +38,8 @@ public class EmployeePresenter implements IViewLisenner {
 
 	@Override
 	public void onMouseClickedRowSelected(int id) {
+		System.out.println( employeeDao.getById(id));
 		
-		view.setUpDateOrDeleteFrame(id);
+		view.setUpDateOrDeleteFrame(id,employeeDao.getById(id));
 	}
 }

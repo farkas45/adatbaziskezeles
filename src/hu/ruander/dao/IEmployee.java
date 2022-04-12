@@ -8,9 +8,10 @@ import hu.ruander.model.Employee;
 public interface IEmployee {
 
 	List<Employee> getAll();
-	Employee getId();
+	Employee getById(int id);
 	Employee getObjectFromRs(ResultSet rs);
 	void saveEmployee(Employee employee);
+	
 	
 	
 }
