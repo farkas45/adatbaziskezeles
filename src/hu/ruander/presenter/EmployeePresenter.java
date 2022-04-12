@@ -31,6 +31,8 @@ public class EmployeePresenter implements IViewLisenner {
 	@Override
 	public void onButtonClickedSaveEmployee() {
 		employeeDao.saveEmployee(view.getEmpDataFromFrame());
+		view.tableEmployeeRowsDelet();
+		fillTableEmployee(employeeDao.getAll());
 		
 	}
 }
