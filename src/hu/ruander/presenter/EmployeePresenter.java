@@ -37,8 +37,8 @@ public class EmployeePresenter implements IViewLisenner {
 	}
 
 	@Override
-	public void onMouseClickedRowSelected() {
-		// TODO Auto-generated method stub
+	public void onMouseClickedRowSelected(int id) {
 		
+		view.setUpDateOrDeleteFrame(id);
 	}
 }

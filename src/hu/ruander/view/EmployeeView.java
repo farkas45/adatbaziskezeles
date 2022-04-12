@@ -41,6 +41,7 @@ public class EmployeeView {
 	private JLabel lblCompany;
 	private JLabel lblGender;
 	private JButton btnEmpSave;
+	private JFrame empUpDateOrDeleteFrame;
 	public EmployeeView() {
 		this.listeners=new ArrayList<IViewLisenner>();
 		empListFrame = new JFrame();
@@ -59,7 +60,8 @@ public class EmployeeView {
 		tableEmployee.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				notifyListenersMouseClickedRowSelected();
+				
+				notifyListenersMouseClickedRowSelected(getTableId(tableEmployee.rowAtPoint(e.getPoint())));
 			}
 			  
 			
@@ -97,9 +99,9 @@ public class EmployeeView {
 		}
 	}
 	
-	private void  notifyListenersMouseClickedRowSelected() {
+	private void  notifyListenersMouseClickedRowSelected(int id) {
 		for (IViewLisenner listener : listeners) {
-			listener.onMouseClickedRowSelected();
+			listener.onMouseClickedRowSelected(id);
 		}
 	}
 //----------------------------------------------------------------------------------------------------------------------
@@ -247,4 +249,23 @@ public class EmployeeView {
 		return employee;
 	}
 	
+	public void setUpDateOrDeleteFrame(int id) {
+		empUpDateOrDeleteFrame = new JFrame();
+		empUpDateOrDeleteFrame.setBounds(900, 200, 600, 700);
+		empUpDateOrDeleteFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		empUpDateOrDeleteFrame.getContentPane().setLayout(null);
+		empUpDateOrDeleteFrame.setTitle("Adat módósítás vagy törlés id: "+id);
+		empUpDateOrDeleteFrame.setVisible(true);
+		
+		
+		
+	}
+	public int getTableId(int rowCount) {
+		
+		int id=Integer.parseInt(tableEmployee.getModel().getValueAt(rowCount, 0).toString());
+		
+		
+		return id;
+	}
+
 }
