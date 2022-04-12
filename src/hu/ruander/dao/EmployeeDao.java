@@ -134,12 +134,13 @@ public class EmployeeDao implements IEmployee{
 	public List<Employee> SearchData(String data) {
 		List<Employee> employees = new ArrayList<Employee>();
 		System.out.println(data);
-		String sql = "SELECT * FROM employee WHERE deleted = 0 AND first_name LIKE '% "+ data+"%';"; 
+		String sql = "SELECT * FROM employee WHERE first_name LIKE '%"+data+"%';"; 
 		try {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				employees.add(getObjectFromRs(rs));
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
