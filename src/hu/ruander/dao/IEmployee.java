@@ -11,6 +11,8 @@ public interface IEmployee {
 	Employee getById(int id);
 	Employee getObjectFromRs(ResultSet rs);
 	void saveEmployee(Employee employee);
+	void setNewDateUpdat(Employee employee, int id);
+	void DeleteDataById(Employee employee,int id);
 	
 	
 	
