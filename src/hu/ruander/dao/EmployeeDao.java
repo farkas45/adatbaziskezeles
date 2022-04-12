@@ -97,6 +97,39 @@ public class EmployeeDao implements IEmployee{
 		
 	}
 
+	@Override
+	public void setNewDateUpdat(Employee employee, int id) {
+		System.out.println(employee.toString());
+		String sql="UPDATE employee SET first_name=?, last_name=?,email=?,gender=?, company=?, salary=? WHERE id=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, employee.getFirstName());
+			pstmt.setString(2, employee.getLastName());
+			pstmt.setString(3, employee.getEmail());
+			pstmt.setString(4, employee.getGender());
+			pstmt.setString(5, employee.getCompany());
+			pstmt.setInt(6, employee.getSalary());
+			pstmt.setInt(7, id);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch blocks
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void DeleteDataById(Employee employee, int id ) {
+		String sql="UPDATE employee SET deleted=1 WHERE id=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 
 
 

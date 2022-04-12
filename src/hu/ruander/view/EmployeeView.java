@@ -42,6 +42,7 @@ public class EmployeeView {
 	private JLabel lblCompany;
 	private JLabel lblGender;
 	private JButton btnEmpSave;
+	private JButton btnEmpUpdat;
 	private JButton btnEmpDelet;
 	private JFrame empUpDateOrDeleteFrame;
 	public EmployeeView() {
@@ -104,6 +105,16 @@ public class EmployeeView {
 	private void  notifyListenersMouseClickedRowSelected(int id) {
 		for (IViewLisenner listener : listeners) {
 			listener.onMouseClickedRowSelected(id);
+		}
+	}
+	private void notifyListenersOnButtonClickedUpdateData(int id) {
+		for (IViewLisenner listener : listeners) {
+			listener.onButtonClickedUpdatDate(id);
+		}
+	}
+	private void notifyListenersOnButtonClickedDelete(int id) {
+		for (IViewLisenner listener : listeners) {
+			listener.onButtonClickedDelete(id);
 		}
 	}
 //----------------------------------------------------------------------------------------------------------------------
@@ -242,8 +253,8 @@ public class EmployeeView {
 				tfFirstName.getText(),
 				tfLastName.getText(),
 				tfEmail.getText(),
-				tfCompany.getText(),
 				tfGender.getText(),
+				tfCompany.getText(),
 				Integer.parseInt(tfSalary.getText())
 				
 				
@@ -331,17 +342,34 @@ public class EmployeeView {
 		tfSalary.setText(employee.getSalary()+"");
 		empUpDateOrDeleteFrame.add(tfSalary);
 		
-		btnEmpSave = new JButton("Modósítás");
-		btnEmpSave.setBounds(80,480,190,45);
-		empUpDateOrDeleteFrame.add(btnEmpSave);
-		btnEmpSave.setVisible(true);
+		btnEmpUpdat = new JButton("Modósítás");
+		btnEmpUpdat.setBounds(80,480,190,45);
+		empUpDateOrDeleteFrame.add(btnEmpUpdat);
+		btnEmpUpdat.setVisible(true);
+		
+		btnEmpUpdat.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notifyListenersOnButtonClickedUpdateData(id);
+				
+			}
+		});
+		
 		btnEmpDelet = new JButton("Törlés");
 		btnEmpDelet.setBounds(280,480,190,45);
 		btnEmpDelet.setBackground(Color.red);
 		btnEmpDelet.setForeground(Color.WHITE);
 		empUpDateOrDeleteFrame.add(btnEmpDelet);
 		btnEmpDelet.setVisible(true);
-		
+		btnEmpDelet.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notifyListenersOnButtonClickedDelete(id);
+				
+			}
+		});
 		
 		
 	}
