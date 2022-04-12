@@ -251,12 +251,12 @@ public class EmployeeView {
 		return employee;
 	}
 	
-	public void setUpDateOrDeleteFrame(int id) {
+	public void setUpDateOrDeleteFrame(int id,Employee employee) {
 		empUpDateOrDeleteFrame = new JFrame();
 		empUpDateOrDeleteFrame.setBounds(900, 200, 600, 700);
 		empUpDateOrDeleteFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		empUpDateOrDeleteFrame.getContentPane().setLayout(null);
-		empUpDateOrDeleteFrame.setTitle("Adat módósítás vagy törlés id: "+id);
+		empUpDateOrDeleteFrame.setTitle("Adat módósítás vagy törlés id: "+employee.getId());
 		empUpDateOrDeleteFrame.setVisible(true);
 		
 		lblFirstName = new JLabel("Keresztnév");
@@ -268,6 +268,7 @@ public class EmployeeView {
 		tfFirstName.setBounds(280,60,190,45);
 		tfFirstName.setHorizontalAlignment(SwingConstants.CENTER);
 		tfFirstName.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		tfFirstName.setText(employee.getFirstName());
 		empUpDateOrDeleteFrame.add(tfFirstName);
 		
 		lblLastName = new JLabel("Vezetéknév");
@@ -279,6 +280,7 @@ public class EmployeeView {
 		tfLastName.setBounds(280,120,190,45);
 		tfLastName.setHorizontalAlignment(SwingConstants.CENTER);
 		tfLastName.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		tfLastName.setText(employee.getLastName());
 		empUpDateOrDeleteFrame.add(tfLastName);
 		
 		lblEmail= new JLabel("Email");
@@ -290,6 +292,7 @@ public class EmployeeView {
 		tfEmail.setBounds(280,180,190,45);
 		tfEmail.setHorizontalAlignment(SwingConstants.CENTER);
 		tfEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		tfEmail.setText(employee.getEmail());
 		empUpDateOrDeleteFrame.add(tfEmail);
 		
 		lblCompany= new JLabel("Vállalat");
@@ -301,6 +304,7 @@ public class EmployeeView {
 		tfCompany.setBounds(280,240,190,45);
 		tfCompany.setHorizontalAlignment(SwingConstants.CENTER);
 		tfCompany.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		tfCompany.setText(employee.getCompany());
 		empUpDateOrDeleteFrame.add(tfCompany);
 		
 		lblGender= new JLabel("Nem");
@@ -312,6 +316,7 @@ public class EmployeeView {
 		tfGender.setBounds(280,300,190,45);
 		tfGender.setHorizontalAlignment(SwingConstants.CENTER);
 		tfGender.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		tfGender.setText(employee.getGender());
 		empUpDateOrDeleteFrame.add(tfGender);
 		
 		lblSalary= new JLabel("Fizetés");
@@ -323,6 +328,7 @@ public class EmployeeView {
 		tfSalary.setBounds(280,360,190,45);
 		tfSalary.setHorizontalAlignment(SwingConstants.CENTER);
 		tfSalary.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		tfSalary.setText(employee.getSalary()+"");
 		empUpDateOrDeleteFrame.add(tfSalary);
 		
 		btnEmpSave = new JButton("Modósítás");

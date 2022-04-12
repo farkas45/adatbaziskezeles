@@ -32,9 +32,22 @@ public class EmployeeDao implements IEmployee{
 	}
 
 	@Override
-	public Employee getId() {
-		
-		return null;
+	public Employee getById(int id) {
+		String sql = "SELECT * FROM employee WHERE employee.id= ?;"; 
+		Employee employee=null;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				employee= getObjectFromRs(rs);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return employee;
 	}
 
 	@Override
