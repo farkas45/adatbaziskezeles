@@ -35,6 +35,8 @@ public class EmployeeView {
 	private JTextField tfEmail;
 	private JTextField tfCompany;
 	private JTextField tfGender;
+	private JTextField tfSearch;
+	private JLabel lblSearch;
 	private JLabel lblFirstName;
 	private JLabel lblLastName;
 	private JLabel lblSalary;
@@ -42,9 +44,11 @@ public class EmployeeView {
 	private JLabel lblCompany;
 	private JLabel lblGender;
 	private JButton btnEmpSave;
+	private JButton btnSeach;
 	private JButton btnEmpUpdat;
 	private JButton btnEmpDelet;
 	private JFrame empUpDateOrDeleteFrame;
+	private JButton btnClose;
 	public EmployeeView() {
 		this.listeners=new ArrayList<IViewLisenner>();
 		empListFrame = new JFrame();
@@ -81,11 +85,37 @@ public class EmployeeView {
 				
 			}
 		});
-		
 		empListFrame.add(btnCreateEmpNewFrame);
+		tfSearch= new JTextField();
+		tfSearch.setBounds(90,300,190,45);
+		tfSearch.setHorizontalAlignment(SwingConstants.CENTER);
+		tfSearch.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblSearch =new JLabel("Keresés");
+		lblSearch.setBounds(30,300, 150, 50);
+		btnSeach = new JButton("Keresés");
+		btnSeach.setBounds(290,300, 150, 50);
+		btnSeach.addActionListener( new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notifyListenersOnButtonClickedSearch(tfSearch.getText());
+				
+			}
+		});
+		
+		
+	
+		
+		empListFrame.add(tfSearch);
+		empListFrame.add(btnSeach);
+		empListFrame.add(lblSearch);
 		empListFrame.setVisible(true);
 	}
-//--------------------------------------------------------------------------------------------------------------------------
+
+	
+	
+	
+	//--------------------------------------------------------------------------------------------------------------------------
 	//Lisenerek
 	public void addLisener(final IViewLisenner listener) {
 		listeners.add(listener);
@@ -115,6 +145,21 @@ public class EmployeeView {
 	private void notifyListenersOnButtonClickedDelete(int id) {
 		for (IViewLisenner listener : listeners) {
 			listener.onButtonClickedDelete(id);
+		}
+	}
+	private void notifyListenersOnButtonClickedSearch( String data) {
+		for (IViewLisenner listener : listeners) {
+			listener.onButtonClickedSearch( data);
+		}
+	}
+	private void notifyListenersOnButtonClickedCloseUdateOrDeleteFrame() {
+		for (IViewLisenner listener : listeners) {
+			listener.onButtonClickedCloseUpdateOrDelete();
+		}
+	}
+	private void notifyListenersOnButtonClickedCloseNewDataFrame() {
+		for (IViewLisenner listener : listeners) {
+			listener.onButtonClickedCloseNewDataFrame();
 		}
 	}
 //----------------------------------------------------------------------------------------------------------------------
@@ -237,12 +282,27 @@ public class EmployeeView {
 		empNewFrame.add(btnEmpSave);
 		btnEmpSave.setVisible(true);
 		
+		btnClose = new JButton("Bezár");
+		btnClose.setBounds(280,560,190,45);
+		btnClose.setBackground(Color.YELLOW);
+		btnClose.setForeground(Color.BLACK);
+		empNewFrame.add(btnClose );
+		btnClose.setVisible(true);
+		btnClose.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notifyListenersOnButtonClickedCloseNewDataFrame();
+				
+			}
+		});
+		
 		btnEmpSave.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				notifyListenersOnButtonClickedSaveEmployee();
 				
+				notifyListenersOnButtonClickedSaveEmployee();
 			}
 		});
 		
@@ -371,6 +431,21 @@ public class EmployeeView {
 			}
 		});
 		
+		btnClose = new JButton("Bezár");
+		btnClose.setBounds(280,560,190,45);
+		btnClose.setBackground(Color.YELLOW);
+		btnClose.setForeground(Color.BLACK);
+		empUpDateOrDeleteFrame.add(btnClose );
+		btnClose.setVisible(true);
+		btnClose.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notifyListenersOnButtonClickedCloseUdateOrDeleteFrame();
+				
+			}
+		});
+		
 		
 	}
 	public int getTableId(int rowCount) {
@@ -380,5 +455,11 @@ public class EmployeeView {
 		
 		return id;
 	}
+	public void disposeUpdateorDeletFrame() {
+	empUpDateOrDeleteFrame.dispose();
+	}
+	public void disposeNewDataFrame() {
+		empNewFrame.dispose();
+		}
 
 }

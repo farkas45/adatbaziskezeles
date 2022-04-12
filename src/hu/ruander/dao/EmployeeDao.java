@@ -130,6 +130,25 @@ public class EmployeeDao implements IEmployee{
 		}
 	}
 
+	@Override
+	public List<Employee> SearchData(String data) {
+		List<Employee> employees = new ArrayList<Employee>();
+		String sql = "SELECT * FROM employee WHERE employee.deleted = 0;"; 
+		try {
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				employees.add(getObjectFromRs(rs));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return employees;
+	}
+
+
+
 
 
 

@@ -13,6 +13,7 @@ public interface IEmployee {
 	void saveEmployee(Employee employee);
 	void setNewDateUpdat(Employee employee, int id);
 	void DeleteDataById(Employee employee,int id);
+	List<Employee> SearchData(String data );
 	
 	
 	
