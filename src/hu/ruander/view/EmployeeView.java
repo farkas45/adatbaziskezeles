@@ -1,5 +1,6 @@
 package hu.ruander.view;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,6 +42,7 @@ public class EmployeeView {
 	private JLabel lblCompany;
 	private JLabel lblGender;
 	private JButton btnEmpSave;
+	private JButton btnEmpDelet;
 	private JFrame empUpDateOrDeleteFrame;
 	public EmployeeView() {
 		this.listeners=new ArrayList<IViewLisenner>();
@@ -256,6 +258,83 @@ public class EmployeeView {
 		empUpDateOrDeleteFrame.getContentPane().setLayout(null);
 		empUpDateOrDeleteFrame.setTitle("Adat módósítás vagy törlés id: "+id);
 		empUpDateOrDeleteFrame.setVisible(true);
+		
+		lblFirstName = new JLabel("Keresztnév");
+		lblFirstName.setBounds(100,60,190,45);
+		lblFirstName.setFont(new Font("Tahoma", Font.BOLD, 16));
+		empUpDateOrDeleteFrame.add(lblFirstName);
+		
+		tfFirstName = new JTextField();
+		tfFirstName.setBounds(280,60,190,45);
+		tfFirstName.setHorizontalAlignment(SwingConstants.CENTER);
+		tfFirstName.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		empUpDateOrDeleteFrame.add(tfFirstName);
+		
+		lblLastName = new JLabel("Vezetéknév");
+		lblLastName.setBounds(100,120,190,45);
+		lblLastName.setFont(new Font("Tahoma", Font.BOLD, 16));
+		empUpDateOrDeleteFrame.add(lblLastName);
+		
+		tfLastName = new JTextField();
+		tfLastName.setBounds(280,120,190,45);
+		tfLastName.setHorizontalAlignment(SwingConstants.CENTER);
+		tfLastName.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		empUpDateOrDeleteFrame.add(tfLastName);
+		
+		lblEmail= new JLabel("Email");
+		lblEmail.setBounds(100,180,190,45);
+		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 16));
+		empUpDateOrDeleteFrame.add(lblEmail);
+		
+		tfEmail= new JTextField();
+		tfEmail.setBounds(280,180,190,45);
+		tfEmail.setHorizontalAlignment(SwingConstants.CENTER);
+		tfEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		empUpDateOrDeleteFrame.add(tfEmail);
+		
+		lblCompany= new JLabel("Vállalat");
+		lblCompany.setBounds(100,240,190,45);
+		lblCompany.setFont(new Font("Tahoma", Font.BOLD, 16));
+		empUpDateOrDeleteFrame.add(lblCompany);
+		
+		tfCompany= new JTextField();
+		tfCompany.setBounds(280,240,190,45);
+		tfCompany.setHorizontalAlignment(SwingConstants.CENTER);
+		tfCompany.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		empUpDateOrDeleteFrame.add(tfCompany);
+		
+		lblGender= new JLabel("Nem");
+		lblGender.setBounds(100,300,190,45);
+		lblGender.setFont(new Font("Tahoma", Font.BOLD, 16));
+		empUpDateOrDeleteFrame.add(lblGender);
+		
+		tfGender= new JTextField();
+		tfGender.setBounds(280,300,190,45);
+		tfGender.setHorizontalAlignment(SwingConstants.CENTER);
+		tfGender.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		empUpDateOrDeleteFrame.add(tfGender);
+		
+		lblSalary= new JLabel("Fizetés");
+		lblSalary.setBounds(100,360,190,45);
+		lblSalary.setFont(new Font("Tahoma", Font.BOLD, 16));
+		empUpDateOrDeleteFrame.add(lblSalary);
+		
+		tfSalary = new JTextField();
+		tfSalary.setBounds(280,360,190,45);
+		tfSalary.setHorizontalAlignment(SwingConstants.CENTER);
+		tfSalary.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		empUpDateOrDeleteFrame.add(tfSalary);
+		
+		btnEmpSave = new JButton("Modósítás");
+		btnEmpSave.setBounds(80,480,190,45);
+		empUpDateOrDeleteFrame.add(btnEmpSave);
+		btnEmpSave.setVisible(true);
+		btnEmpDelet = new JButton("Törlés");
+		btnEmpDelet.setBounds(280,480,190,45);
+		btnEmpDelet.setBackground(Color.red);
+		btnEmpDelet.setForeground(Color.WHITE);
+		empUpDateOrDeleteFrame.add(btnEmpDelet);
+		btnEmpDelet.setVisible(true);
 		
 		
 		
