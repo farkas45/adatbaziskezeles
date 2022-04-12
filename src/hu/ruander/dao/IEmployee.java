@@ -12,4 +12,5 @@ public interface IEmployee {
 	Employee getObjectFromRs(ResultSet rs);
 	void saveEmployee(Employee employee);
 	
+	
 }

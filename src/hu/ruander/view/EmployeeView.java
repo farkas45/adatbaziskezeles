@@ -3,6 +3,8 @@ package hu.ruander.view;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +56,15 @@ public class EmployeeView {
 		tableEmployee = new JTable();
 		scrollPane.setViewportView(tableEmployee);
 		
+		tableEmployee.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				notifyListenersMouseClickedRowSelected();
+			}
+			  
+			
+		});
+		
 		btnCreateEmpNewFrame = new JButton("Új dolgozó felvitel");
 		btnCreateEmpNewFrame.setBounds(60,240, 150, 50);
 		
@@ -83,6 +94,12 @@ public class EmployeeView {
 	private void notifyListenersOnButtonClickedSaveEmployee() {
 		for (final IViewLisenner listener : listeners) {
 			listener.onButtonClickedSaveEmployee();
+		}
+	}
+	
+	private void  notifyListenersMouseClickedRowSelected() {
+		for (IViewLisenner listener : listeners) {
+			listener.onMouseClickedRowSelected();
 		}
 	}
 //----------------------------------------------------------------------------------------------------------------------
