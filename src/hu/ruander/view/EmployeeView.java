@@ -93,7 +93,12 @@ public class EmployeeView {
 			tableEmployee.getColumnModel().getColumn(i).setCellRenderer(renderer);
 		}
 	}
-	
+	public void tableEmployeeRowsDelet() {
+		int rowcount=tableEmployee.getModel().getRowCount();
+		for (int i = rowcount-1; i >=0; i--) {
+			((DefaultTableModel) tableEmployee.getModel()).removeRow(i);
+		}
+	}
 	public void setModelTableEmployee(List<Employee> employees) {
 		DefaultTableModel model=new DefaultTableModel();
 		model.addColumn("Azonosító");
