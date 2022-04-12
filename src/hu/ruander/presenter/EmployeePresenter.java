@@ -62,8 +62,8 @@ public class EmployeePresenter implements IViewLisenner {
 	@Override
 	public void onButtonClickedSearch( String data) {
 		List<Employee> employees =employeeDao.SearchData(data);
-			
-		if (employees!=null) {
+			System.out.println(employees.isEmpty());
+		if (!employees.isEmpty()) {
 			view.tableEmployeeRowsDelet();
 			fillTableEmployee(employees);
 		}
