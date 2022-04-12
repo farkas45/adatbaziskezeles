@@ -1,5 +1,7 @@
 package hu.ruander.view;
 
+import hu.ruander.model.Employee;
+
 public interface IViewLisenner {
 
 	public void onButtonClickedCreateFrame();
@@ -7,4 +9,7 @@ public interface IViewLisenner {
 	public void onMouseClickedRowSelected(int id);
 	public void onButtonClickedUpdatDate(int id);
 	public void onButtonClickedDelete(int id);
+	public void onButtonClickedSearch( String data);
+	public void onButtonClickedCloseUpdateOrDelete();
+	public void onButtonClickedCloseNewDataFrame();
 }

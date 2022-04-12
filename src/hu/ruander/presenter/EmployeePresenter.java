@@ -48,7 +48,7 @@ public class EmployeePresenter implements IViewLisenner {
 		employeeDao.setNewDateUpdat(view.getEmpDataFromFrame(),id);
 		view.tableEmployeeRowsDelet();
 		fillTableEmployee(employeeDao.getAll());
-		
+		view.disposeUpdateorDeletFrame();
 	}
 
 	@Override
@@ -56,5 +56,32 @@ public class EmployeePresenter implements IViewLisenner {
 		employeeDao.DeleteDataById(view.getEmpDataFromFrame(),id);
 		view.tableEmployeeRowsDelet();
 		fillTableEmployee(employeeDao.getAll());
+		view.disposeUpdateorDeletFrame();
 	}
+
+	@Override
+	public void onButtonClickedSearch( String data) {
+		if (employeeDao.SearchData(data)!=null) {
+			view.tableEmployeeRowsDelet();
+			fillTableEmployee(employeeDao.SearchData(data));
+		}
+		else {
+			
+		}
+		
+	}
+
+	@Override
+	public void onButtonClickedCloseUpdateOrDelete() {
+		view.disposeUpdateorDeletFrame();
+		
+	}
+
+	@Override
+	public void onButtonClickedCloseNewDataFrame() {
+		view.disposeNewDataFrame();
+		
+	}
+
+	
 }
