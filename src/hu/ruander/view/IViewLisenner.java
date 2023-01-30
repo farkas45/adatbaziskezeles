@@ -1,7 +1,5 @@
 package hu.ruander.view;
 
-import hu.ruander.model.Employee;
-
 public interface IViewLisenner {
 
 	public void onButtonClickedCreateFrame();
